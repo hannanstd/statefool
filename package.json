@@ -1,0 +1,37 @@
+{
+	"name": "statefool",
+	"version": "1.0.0",
+	"description": "the most easiest State-Managment package for React.",
+	"main": "index.js",
+	"scripts": {
+		"build": "babel src/index.dev.js --out-file dist/index.prod.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/hannanstd/statefool.git"
+	},
+	"keywords": [
+		"react",
+		"reactjs",
+		"state",
+		"state-manager",
+		"state-management",
+		"redux",
+		"simple-state",
+		"no-redux",
+		"react-native"
+	],
+	"author": "hannanstd",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/hannanstd/statefool/issues"
+	},
+	"homepage": "https://github.com/hannanstd/statefool#readme",
+	"devDependencies": {
+		"@babel/cli": "^7.6.0",
+		"@babel/core": "^7.6.0",
+		"@babel/plugin-transform-runtime": "^7.6.0",
+		"@babel/preset-env": "^7.6.0",
+		"@babel/preset-react": "^7.0.0"
+	}
+}
