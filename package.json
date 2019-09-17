@@ -1,6 +1,6 @@
 {
 	"name": "statefool",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "the most easiest State-Managment package for React.",
 	"main": "index.js",
 	"scripts": {
