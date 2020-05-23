@@ -27,7 +27,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var Contexts;
 Contexts = Contexts || {};
@@ -40,22 +40,20 @@ exports.getContext = getContext;
 
 var useHook = function useHook(init) {
   var _useState = (0, _react.useState)(_objectSpread({}, init)),
-      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
       state = _useState2[0],
       _setState = _useState2[1];
 
-  return _objectSpread({
+  return _objectSpread(_objectSpread({
     state: state
-  }, state, {
+  }, state), {}, {
     setState: function () {
-      var _setState2 = (0, _asyncToGenerator2.default)(
-      /*#__PURE__*/
-      _regenerator.default.mark(function _callee(argument) {
+      var _setState2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(argument) {
         var callback,
             name,
             updated,
             _args = arguments;
-        return _regenerator.default.wrap(function _callee$(_context) {
+        return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
@@ -66,16 +64,16 @@ var useHook = function useHook(init) {
                 return _setState(function (prevState) {
                   //
                   if (typeof argument === 'function') {
-                    if (name) argument = (0, _defineProperty2.default)({}, name, argument(prevState[name]));else argument = argument(prevState);
+                    if (name) argument = (0, _defineProperty2["default"])({}, name, argument(prevState[name]));else argument = argument(prevState);
                   } else {
-                    if (name) argument = (0, _defineProperty2.default)({}, name, argument);
+                    if (name) argument = (0, _defineProperty2["default"])({}, name, argument);
                   }
 
-                  return updated = _objectSpread({}, prevState, {}, (0, _typeof2.default)(argument) === 'object' ? argument : {});
+                  return updated = _objectSpread(_objectSpread({}, prevState), (0, _typeof2["default"])(argument) === 'object' ? argument : {});
                 });
 
               case 5:
-                if (typeof callback === 'function') callback(name ? updated[name] : _objectSpread({}, updated, {
+                if (typeof callback === 'function') callback(name ? updated[name] : _objectSpread(_objectSpread({}, updated), {}, {
                   state: updated
                 }));
 
@@ -105,7 +103,7 @@ var Provider = function Provider(_ref) {
       _ref$initialState = _ref.initialState,
       initialState = _ref$initialState === void 0 ? null : _ref$initialState;
   var Context = getContext(id);
-  return _react.default.createElement(Context.Provider, {
+  return /*#__PURE__*/_react["default"].createElement(Context.Provider, {
     value: useHook(state || initialState)
   }, children);
 };
@@ -116,7 +114,7 @@ var Consumer = function Consumer(_ref2) {
   var children = _ref2.children,
       id = _ref2.id;
   var Context = getContext(id);
-  return _react.default.createElement(Context.Consumer, null, children);
+  return /*#__PURE__*/_react["default"].createElement(Context.Consumer, null, children);
 };
 
 exports.Consumer = Consumer;
@@ -136,13 +134,13 @@ var withState = function withState(Component) {
   var ids = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   return function (props) {
     ids = ids || Object.keys(Contexts);
-    ids = (0, _typeof2.default)(ids) === 'object' && ids.constructor === Array ? ids : (0, _toConsumableArray2.default)(ids.toString().split(','));
+    ids = (0, _typeof2["default"])(ids) === 'object' && ids.constructor === Array ? ids : (0, _toConsumableArray2["default"])(ids.toString().split(','));
     var ctxs = {};
     ids.forEach(function (id) {
       id = id.trim();
       return ctxs[id] = useStateFrom(id);
     });
-    return _react.default.createElement(Component, (0, _extends2.default)({}, props, ctxs));
+    return /*#__PURE__*/_react["default"].createElement(Component, (0, _extends2["default"])({}, props, ctxs));
   };
 };
 
